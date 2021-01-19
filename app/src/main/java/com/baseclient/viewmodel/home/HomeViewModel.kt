@@ -4,10 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.shop.base.BaseViewModel
 import com.shop.model.HomeData
-import com.shop.net.Injection
+import com.baseclient.net.repository.MyInjection
+import com.shop.net.repository.SystemRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel: BaseViewModel(Injection.repository) {
+class HomeViewModel: BaseViewModel<SystemRepository>(MyInjection.repository) {
 
     var homeData:MutableLiveData<HomeData> = MutableLiveData()
 

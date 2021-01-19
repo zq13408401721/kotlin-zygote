@@ -6,8 +6,6 @@ import com.shop.model.TopicData
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
-import retrofit2.http.QueryMap
-import java.util.HashMap
 
 /**
  * 网络请求API

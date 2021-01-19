@@ -1,13 +1,12 @@
 package com.baseclient.app
 
 import android.app.Application
-import android.content.Context
 import com.shop.utils.MyMmkv
 
-class MyApp:Application() {
+open class BaseApp:Application() {
 
     companion object{
-        var instance:MyApp? = null
+        var instance:BaseApp? = null
     }
 
     override fun onCreate() {

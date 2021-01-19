@@ -1,6 +1,6 @@
 package com.shop.utils
 
-import com.baseclient.app.MyApp
+import com.baseclient.app.BaseApp
 import com.tencent.mmkv.MMKV
 
 /**
@@ -20,7 +20,7 @@ class MyMmkv {
          * 初始化MMKV
          */
         fun initMMKV(){
-            MMKV.initialize(MyApp.instance)
+            MMKV.initialize(BaseApp.instance)
             mkv = MMKV.defaultMMKV()
         }
 
