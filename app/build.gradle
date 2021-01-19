@@ -3,14 +3,15 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.github.dcendents.android-maven'
 }
+group='com.github.zq13408401721'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.baseclient"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
