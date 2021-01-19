@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
@@ -44,12 +44,12 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.room:room-runtime:2.2.5'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api 'androidx.core:core-ktx:1.3.2'
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.google.android.material:material:1.2.1'
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api 'androidx.room:room-runtime:2.2.5'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -57,34 +57,34 @@ dependencies {
     annotationProcessor 'androidx.annotation:annotation:1.0.0'
 
     //协程库
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
     //retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.6.0'
-    implementation 'com.jakewharton:butterknife:10.0.0'
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.6.2'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    api 'com.squareup.okhttp3:okhttp:3.6.0'
+    api 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
-    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
-    implementation 'com.github.kinkoi:materialsearchview:1.4.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    api 'com.prolificinteractive:material-calendarview:1.4.3'
+    api 'com.github.kinkoi:materialsearchview:1.4.0'
+    api 'io.reactivex.rxjava2:rxjava:2.2.7'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
 
     //banner
-    implementation 'com.youth.banner:banner:1.4.9'
+    api 'com.youth.banner:banner:1.4.9'
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    api 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
     kapt  'com.github.bumptech.glide:compiler:4.9.0'
     //gson
-    implementation "com.google.code.gson:gson:2.8.5"
+    api "com.google.code.gson:gson:2.8.5"
     //jetpack
     //viewModelScope
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01'
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     // 数据绑定访问BR的环境
     kapt  "com.android.databinding:compiler:3.5.0"
     //mmkv数据保存
-    implementation 'com.tencent:mmkv-static:1.0.23'
+    api 'com.tencent:mmkv-static:1.0.23'
 }
