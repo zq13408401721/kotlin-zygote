@@ -1,5 +1,7 @@
 package com.shop.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +17,13 @@ abstract class BaseActivity<VM:ViewModel,DB:ViewDataBinding>(var layoutId:Int,va
 
     protected lateinit var mViewModel:VM
     protected lateinit var mDataBinding:DB
+    protected lateinit var mContext:Context
+    protected lateinit var mActivity:Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mContext = baseContext
+        mActivity = this
         mDataBinding = DataBindingUtil.setContentView(this,layoutId)
         mViewModel = ViewModelProvider(this).get(vmClass)
         initView()
