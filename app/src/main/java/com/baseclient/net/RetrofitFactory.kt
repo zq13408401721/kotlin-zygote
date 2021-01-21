@@ -1,7 +1,7 @@
 package com.shop.net
 
 import android.util.Log
-import com.shop.api.ServiceApi
+import com.baseclient.base.BaseApi
 import com.shop.app.Constants
 import com.shop.utils.MyMmkv
 import okhttp3.Interceptor
@@ -40,7 +40,7 @@ class RetrofitFactory {
 
         //Retrofit实例化
         retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(BaseApi.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(initClient())
