@@ -32,9 +32,8 @@ class RetrofitFactory {
             chain -> val request = chain.request()
                 .newBuilder()
                 .addHeader("charset","UTF-8")
-                .addHeader("token",MyMmkv.getString(Constants.token))
+                .addHeader(MyMmkv.getString(Constants.token_key),MyMmkv.getString(Constants.token))
                 .build()
-
             chain.proceed(request)
         }
 
@@ -54,8 +53,8 @@ class RetrofitFactory {
         return OkHttpClient.Builder()
                 .addInterceptor(LoggingInterceptor())
                 .addInterceptor(interceptor)
-                .connectTimeout(6, TimeUnit.SECONDS)
-                .readTimeout(6, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
                 .build()
     }
 

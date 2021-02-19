@@ -26,25 +26,18 @@ class MyMmkv {
 
         //保存数据
         fun setValue(key:String,value:Any){
-            when(value){
-                value is String -> {
-                    mkv.putString(key,value as String)
-                }
-                value is Int -> {
-                    mkv.putInt(key,value as Int)
-                }
-                value is Boolean -> {
-                    mkv.putBoolean(key,value as Boolean)
-                }
-                value is Float -> {
-                    mkv.putFloat(key,value as Float)
-                }
-                value is Long -> {
-                    mkv.putLong(key,value as Long)
-                }
-                value is ByteArray -> {
-                    mkv.putBytes(key,value as ByteArray)
-                }
+            if(value is String){
+                mkv.putString(key,value as String)
+            }else if(value is Int){
+                mkv.putInt(key,value as Int)
+            }else if(value is Boolean){
+                mkv.putBoolean(key,value as Boolean)
+            }else if(value is Float){
+                mkv.putFloat(key,value as Float)
+            }else if(value is Long){
+                mkv.putLong(key,value as Long)
+            }else if(value is ByteArray){
+                mkv.putBytes(key,value as ByteArray)
             }
         }
         //获取数据
