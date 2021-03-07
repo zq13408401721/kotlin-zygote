@@ -88,11 +88,8 @@ class RetrofitFactory {
                         .build()
                 var newReq = builder.url(newHttpUrl).build()
                 return chain.proceed(newReq)
-            }else{
-                var oldReq = builder.url(BaseApi.baseUrl).build()
-                return chain.proceed(oldReq)
             }
-            return null!!
+            return chain.proceed(req)
         }
     }
 
