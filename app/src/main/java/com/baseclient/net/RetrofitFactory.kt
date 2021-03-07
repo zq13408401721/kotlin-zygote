@@ -4,10 +4,7 @@ import android.util.Log
 import com.baseclient.base.BaseApi
 import com.shop.app.Constants
 import com.shop.utils.MyMmkv
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
+import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -51,6 +48,7 @@ class RetrofitFactory {
      */
     private fun initClient(): OkHttpClient {
         return OkHttpClient.Builder()
+                .addInterceptor(MoreBaseUrlInterceptor())
                 .addInterceptor(LoggingInterceptor())
                 .addInterceptor(interceptor)
                 .connectTimeout(60, TimeUnit.SECONDS)
@@ -68,6 +66,32 @@ class RetrofitFactory {
             var responseBody = response.peekBody(Long.MAX_VALUE)
             Log.i("responseBody",responseBody.string())
             return response
+        }
+    }
+
+    /**
+     * 基础地址
+     */
+    class MoreBaseUrlInterceptor:Interceptor{
+
+        override fun intercept(chain: Interceptor.Chain): Response {
+            var req = chain.request()
+            var oldUrl = req.url()
+            //builder
+            var builder = req.newBuilder()
+            var newUrl = req.header("newurl")
+            if(newUrl!!.isNotEmpty()){
+                builder.removeHeader("urlname")
+                var baseUrl = HttpUrl.parse(newUrl)
+                var newHttpUrl = oldUrl.newBuilder()
+                        .scheme(baseUrl!!.scheme())
+                        .host(baseUrl!!.host())
+                        .port(baseUrl!!.port())
+                        .build()
+                var newReq = builder.url(newHttpUrl).build()
+                return chain.proceed(newReq)
+            }
+            return chain.proceed(req)
         }
     }
 
