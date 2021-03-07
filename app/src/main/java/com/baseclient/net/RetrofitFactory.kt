@@ -76,22 +76,23 @@ class RetrofitFactory {
 
         override fun intercept(chain: Interceptor.Chain): Response {
             var req = chain.request()
-            var oldUrl = req.url()
             //builder
             var builder = req.newBuilder()
             var newUrl = req.header("newurl")
             if(newUrl != null && newUrl!!.isNotEmpty()){
-                builder.removeHeader("urlname")
                 var baseUrl = HttpUrl.parse(newUrl)
-                var newHttpUrl = oldUrl.newBuilder()
+                var newHttpUrl = HttpUrl.Builder()
                         .scheme(baseUrl!!.scheme())
                         .host(baseUrl!!.host())
                         .port(baseUrl!!.port())
                         .build()
                 var newReq = builder.url(newHttpUrl).build()
                 return chain.proceed(newReq)
+            }else{
+                var oldReq = builder.url(BaseApi.baseUrl).build()
+                return chain.proceed(oldReq)
             }
-            return chain.proceed(req)
+            return null!!
         }
     }
 
