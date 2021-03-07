@@ -80,7 +80,7 @@ class RetrofitFactory {
             //builder
             var builder = req.newBuilder()
             var newUrl = req.header("newurl")
-            if(newUrl!!.isNotEmpty()){
+            if(newUrl != null && newUrl!!.isNotEmpty()){
                 builder.removeHeader("urlname")
                 var baseUrl = HttpUrl.parse(newUrl)
                 var newHttpUrl = oldUrl.newBuilder()
