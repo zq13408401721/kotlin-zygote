@@ -76,6 +76,7 @@ class RetrofitFactory {
 
         override fun intercept(chain: Interceptor.Chain): Response {
             var req = chain.request()
+            var oldUrl = req.url()
             //builder
             var builder = req.newBuilder()
             var newUrl = req.header("newurl")
@@ -85,6 +86,8 @@ class RetrofitFactory {
                         .scheme(baseUrl!!.scheme())
                         .host(baseUrl!!.host())
                         .port(baseUrl!!.port())
+                        .encodedPath(oldUrl.encodedPath())
+                        .encodedQuery(oldUrl.encodedQuery())
                         .build()
                 var newReq = builder.url(newHttpUrl).build()
                 return chain.proceed(newReq)
